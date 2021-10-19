@@ -26,5 +26,6 @@ How to use it:
         (5) Extra active (strenuous exercise two or more times per day)
         
 What is next?
-1. To add calculate calories based on person's goal: healthy, diet, cutting, bulking
-2. To add calculate macros (proties, carbs, and fats)
+1. Calculating calories based on person's goal: healthy, diet, cutting, bulking
+2. Calculating the macros (proties, carbs, and fats)
+3. Calculating the ideal weight range for a person.
