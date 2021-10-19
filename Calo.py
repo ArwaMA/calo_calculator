@@ -17,8 +17,9 @@ class Calo:
         
         
     def calculate_bmr(self):
-        """ Function to calculate person's BMR
+        """ Function to        
         
+              
         Args: 
 			none
 		
@@ -39,19 +40,21 @@ class Calo:
         
         Args: 
             bmr (float) representing person's daily BMR
-			active_level (integer) represening person's active level (from 1 to 4)
+			active_level (integer) represening person's active level (from 1 to 5)
 		
 		Returns: 
 			float: calo - person's daily total calories
         """
         if activ_level == 1:
-            return bmr * 1.25
+            return bmr * 1.2
         elif activ_level == 2:
             return bmr * 1.375
         elif activ_level == 3:
-            return bmr * 1.550
+            return bmr * 1.55
         elif activ_level == 4:
             return bmr * 1.725
+        elif activ_level == 5:
+            return bmr * 1.9
         else:
             return 0
         
@@ -66,11 +69,98 @@ class Calo:
 		Returns: 
 			float: daily calories
         """
-        #check_gender()
-        #check_age()
-        #check_weight()
-        #check_height()
+        self.gender = self.check_gender(self.gender)
+        self.age = self.check_age(self.age)
+        self.weight = self.check_weight(self.weight)
+        self.height = self.check_height(self.height)
+        
         bmr = self.calculate_bmr()
-        calo = self.calculate_total_calo(bmr, active_level)
+        calo = self.calculate_total_calo(bmr, self.check_active_level(active_level))
         
         return round(calo, 2)
+                     
+    def check_gender(self, gender):
+        """ Function to check if the inserted gender is either male or female.
+        
+        Args:
+            gender (string) represening person's gender
+        
+        Returns:
+            string: person's gender
+        """
+        
+        if gender.lower() == 'male' or gender.lower() == 'female':
+            return gender.lower()
+        else:
+            print('Please enter correct gender type: male or female')
+            exit() 
+    
+    def check_age(self, age):
+        """ Function to check if the inserted age is integer.
+        
+        Args:
+            age (integer) represening person's age
+        
+        Returns:
+            string: person's age
+        """
+        
+        if type(age) != int:
+            print('Please enter correct age, integer')
+            exit()
+        if age < 10 or age > 100:
+            print('Please enter correct age, range acceted (10-100)')
+            exit()
+            
+        return age
+    
+    def check_weight(self, weight):
+        """ Function to check if the inserted weight is a number.
+        
+        Args:
+            weight (float) represening person's weight
+        
+        Returns:
+            float: person's weight
+        """
+        
+        if (type(weight) == int or type(weight) == float) and weight > 0:
+            return weight
+        else:
+            print('Please enter correct weight')
+            exit()
+            
+        
+    
+    def check_height(self, height):
+        """ Function to check if the inserted height is a number.
+        
+        Args:
+            height (float) represening person's height
+        
+        Returns:
+            float: person's height
+        """
+        
+        if (type(height) == int or type(height) == float) and height > 0:
+            return height
+        else:
+            print('Please enter correct height')
+            exit()
+            
+    def check_active_level(self, active_level):
+        """ Function to check if the inserted active_level is integer.
+        
+        Args:
+            active_level (integer) represening person's active_level
+        
+        Returns:
+            integer: person's active_level
+        """
+        
+        if type(active_level) != int:
+            print('Please enter correct active level, integer')
+            exit()
+            
+        return active_level
+    
